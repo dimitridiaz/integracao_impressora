@@ -9,7 +9,7 @@ Este sistema é uma aplicação em C para controle de impressoras térmicas Elgi
 ### ✅ Configuração e Conexão
 - Configuração de tipo, modelo e conexão da impressora
 - Abertura e fechamento de conexão
-- Suporte a USB, Serial e Ethernet
+- Suporte a USB
 
 ### 🖨️ Impressão
 - **Texto**: Impressão com formatação (posição, estilo, tamanho)
