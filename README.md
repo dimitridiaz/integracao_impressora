@@ -2,7 +2,8 @@
 
 ## 📖 Descrição
 
-Este sistema é uma aplicação em C para controle de impressoras térmicas Elgin. O programa oferece uma interface de linha de comando para configurar, conectar e utilizar diversas funcionalidades das impressoras Elgin.
+- Este sistema é uma aplicação em C para controle de impressoras térmicas Elgin. O programa oferece uma interface de linha de comando para configurar, conectar e utilizar diversas funcionalidades das impressoras Elgin.
+- Feito por: Dimitri Diaz, Daniel Alencar, Arthur Emiliano, Kauã Felix, Gabriel
 
 ## 🎯 Funcionalidades
 
@@ -41,7 +42,6 @@ Este sistema é uma aplicação em C para controle de impressoras térmicas Elgi
 
 ```
 === MENU PRINCIPAL ===
-Status: ✓ CONECTADO / ✗ DESCONECTADO
 -----------------------
 1  - Configurar Conexao
 2  - Abrir Conexao
@@ -55,7 +55,7 @@ Status: ✓ CONECTADO / ✗ DESCONECTADO
 10 - Sinal Sonoro
 11 - Avanco de Papel
 12 - Corte de Papel
-0  - Sair
+0  - Fechar Conexão e Sair
 ```
 
 📄 Funcionalidades
@@ -70,18 +70,6 @@ Controles
 Gaveta: Elgin (padrão) ou personalizada
 Papel: Avanço 1-10 linhas, corte 0-5 linhas
 Som: 3 beeps padrão
-
-## 📁 Estrutura de Arquivos
-
-```
-projeto/
-├── main.c              # Código principal
-├── E1_Impressora01.dll # DLL da Elgin
-├── XMLSAT.xml          # XML SAT para teste
-├── CANC_SAT.xml        # XML Cancelamento para teste
-├── README.md           # Este arquivo
-└── sistema_impressora.exe # Executável compilado
-```
 
 ## 🔍 Códigos de Erro Comuns
 
