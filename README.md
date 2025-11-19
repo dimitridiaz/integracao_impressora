@@ -3,7 +3,7 @@
 ## 📖 Descrição
 
 - Este sistema é uma aplicação em C para controle de impressoras térmicas Elgin. O programa oferece uma interface de linha de comando para configurar, conectar e utilizar diversas funcionalidades das impressoras Elgin.
-- Feito por: Dimitri Diaz, Daniel Alencar, Arthur Emiliano, Kauã Felix, Gabriel
+- Feito por: Dimitri Diaz, Daniel Alencar, Arthur Emiliano, Kauã Felix, Gabriel Henrique
 
 ## 🎯 Funcionalidades
 
