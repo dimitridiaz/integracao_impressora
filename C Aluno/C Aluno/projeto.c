@@ -6,75 +6,69 @@
 /* ======================= Config DLL ======================= */
 static HMODULE g_hDll = NULL;
 
-/* Conven��o de chamada (Windows): __stdcall */
+/* Convenção de chamada (Windows): __stdcall */
 #ifndef CALLCONV
-#define CALLCONV WINAPI
+#  define CALLCONV WINAPI
 #endif
 
 /* ======================= Assinaturas da DLL ======================= */
-typedef int(CALLCONV *AbreConexaoImpressora_t)(int, const char *, const char *, int);
-typedef int(CALLCONV *FechaConexaoImpressora_t)(void);
-typedef int(CALLCONV *ImpressaoTexto_t)(const char *, int, int, int);
-typedef int(CALLCONV *Corte_t)(int);
-typedef int(CALLCONV *ImpressaoQRCode_t)(const char *, int, int);
-typedef int(CALLCONV *ImpressaoCodigoBarras_t)(int, const char *, int, int, int);
-typedef int(CALLCONV *AvancaPapel_t)(int);
-typedef int(CALLCONV *AbreGavetaElgin_t)(int, int, int);
-typedef int(CALLCONV *AbreGaveta_t)(int, int, int);
-typedef int(CALLCONV *SinalSonoro_t)(int, int, int);
-typedef int(CALLCONV *ImprimeXMLSAT_t)(const char *, int);
-typedef int(CALLCONV *ImprimeXMLCancelamentoSAT_t)(const char *, const char *, int);
-typedef int(CALLCONV *InicializaImpressora_t)(void);
+typedef int (CALLCONV *AbreConexaoImpressora_t)(int, const char *, const char *, int);
+typedef int (CALLCONV *FechaConexaoImpressora_t)(void);
+typedef int (CALLCONV *ImpressaoTexto_t)(const char *, int, int, int);
+typedef int (CALLCONV *Corte_t)(int);
+typedef int (CALLCONV *ImpressaoQRCode_t)(const char *, int, int);
+typedef int (CALLCONV *ImpressaoCodigoBarras_t)(int, const char *, int, int, int);
+typedef int (CALLCONV *AvancaPapel_t)(int);
+typedef int (CALLCONV *AbreGavetaElgin_t)(int, int, int);
+typedef int (CALLCONV *AbreGaveta_t)(int, int, int);
+typedef int (CALLCONV *SinalSonoro_t)(int, int, int);
+typedef int (CALLCONV *ImprimeXMLSAT_t)(const char *, int);
+typedef int (CALLCONV *ImprimeXMLCancelamentoSAT_t)(const char *, const char *, int);
+typedef int (CALLCONV *InicializaImpressora_t)(void);
 
 /* ======================= Ponteiros ======================= */
-static AbreConexaoImpressora_t AbreConexaoImpressora = NULL;
-static FechaConexaoImpressora_t FechaConexaoImpressora = NULL;
-static ImpressaoTexto_t ImpressaoTexto = NULL;
-static Corte_t Corte = NULL;
-static ImpressaoQRCode_t ImpressaoQRCode = NULL;
-static ImpressaoCodigoBarras_t ImpressaoCodigoBarras = NULL;
-static AvancaPapel_t AvancaPapel = NULL;
-static AbreGavetaElgin_t AbreGavetaElgin = NULL;
-static AbreGaveta_t AbreGaveta = NULL;
-static SinalSonoro_t SinalSonoro = NULL;
-static ImprimeXMLSAT_t ImprimeXMLSAT = NULL;
-static ImprimeXMLCancelamentoSAT_t ImprimeXMLCancelamentoSAT = NULL;
-static InicializaImpressora_t InicializaImpressora = NULL;
+static AbreConexaoImpressora_t        AbreConexaoImpressora        = NULL;
+static FechaConexaoImpressora_t       FechaConexaoImpressora       = NULL;
+static ImpressaoTexto_t               ImpressaoTexto               = NULL;
+static Corte_t                        Corte                        = NULL;
+static ImpressaoQRCode_t              ImpressaoQRCode              = NULL;
+static ImpressaoCodigoBarras_t        ImpressaoCodigoBarras        = NULL;
+static AvancaPapel_t                  AvancaPapel                  = NULL;
+static AbreGavetaElgin_t              AbreGavetaElgin              = NULL;
+static AbreGaveta_t                   AbreGaveta                   = NULL;
+static SinalSonoro_t                  SinalSonoro                  = NULL;
+static ImprimeXMLSAT_t                ImprimeXMLSAT                = NULL;
+static ImprimeXMLCancelamentoSAT_t    ImprimeXMLCancelamentoSAT    = NULL;
+static InicializaImpressora_t         InicializaImpressora         = NULL;
 
-/* ======================= Configura��o ======================= */
-static int g_tipo = 1;
-static char g_modelo[64] = "i9";
-static char g_conexao[128] = "USB";
-static int g_parametro = 0;
-static int g_conectada = 0;
+/* ======================= Configuração ======================= */
+static int   g_tipo      = 1;
+static char  g_modelo[64] = "i9";
+static char  g_conexao[128] = "USB";
+static int   g_parametro = 0;
+static int   g_conectada = 0;
 
 /* ======================= Utilidades ======================= */
-#define LOAD_FN(h, name)                                                 \
-    do                                                                   \
-    {                                                                    \
-        name = (name##_t)GetProcAddress((HMODULE)(h), #name);            \
-        if (!(name))                                                     \
-        {                                                                \
-            fprintf(stderr, "Falha ao resolver s�mbolo %s (erro=%lu)\n", \
-                    #name, GetLastError());                              \
-            return 0;                                                    \
-        }                                                                \
+#define LOAD_FN(h, name)                                                         \
+    do {                                                                         \
+        name = (name##_t)GetProcAddress((HMODULE)(h), #name);                    \
+        if (!(name)) {                                                           \
+            fprintf(stderr, "Falha ao resolver símbolo %s (erro=%lu)\n",         \
+                    #name, GetLastError());                                      \
+            return 0;                                                            \
+        }                                                                        \
     } while (0)
 
-static void flush_entrada(void)
-{
+static void flush_entrada(void) {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF)
-    {
-    }
+    while ((c = getchar()) != '\n' && c != EOF) { }
 }
 
-/* ======================= Fun��es para manipular a DLL ======================= */
+/* ======================= Funções para manipular a DLL ======================= */
 static int carregarFuncoes(void)
 {
     g_hDll = LoadLibraryA("E1_Impressora01.dll");
-    if (!g_hDll)
-    {
+    if (!g_hDll) {
         fprintf(stderr, "Erro ao carregar E1_Impressora01.dll (erro=%lu)\n", GetLastError());
         return 0;
     }
@@ -98,14 +92,13 @@ static int carregarFuncoes(void)
 
 static void liberarBiblioteca(void)
 {
-    if (g_hDll)
-    {
+    if (g_hDll) {
         FreeLibrary(g_hDll);
         g_hDll = NULL;
     }
 }
 
-/* ======================= Fun��es a serem implementadas pelos alunos ======================= */
+/* ======================= Funções a serem implementadas pelos alunos ======================= */
 
 static void exibirMenu(void)
 {
@@ -483,7 +476,7 @@ static void emitirSinalSonoro(void)
 
     printf("\n ===EMITINDO SINAL SONORO===\n");
 
-    // INCLUS�O DOS PAR�METROS!
+    // INCLUSï¿½O DOS PARï¿½METROS!
     int resultado = SinalSonoro(4, 50, 5);
 
     if (resultado == 0)
@@ -496,7 +489,7 @@ static void emitirSinalSonoro(void)
     }
 }
 
-/* ======================= Fun��o principal ======================= */
+/* ======================= Funï¿½ï¿½o principal ======================= */
 int main(void)
 {
 
