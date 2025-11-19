@@ -42,7 +42,6 @@
 
 ```
 === MENU PRINCIPAL ===
-Status: ✓ CONECTADO / ✗ DESCONECTADO
 -----------------------
 1  - Configurar Conexao
 2  - Abrir Conexao
@@ -56,7 +55,7 @@ Status: ✓ CONECTADO / ✗ DESCONECTADO
 10 - Sinal Sonoro
 11 - Avanco de Papel
 12 - Corte de Papel
-0  - Sair
+0  - Fechar Conexão e Sair
 ```
 
 📄 Funcionalidades
