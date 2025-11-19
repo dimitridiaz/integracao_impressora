@@ -72,18 +72,6 @@ Gaveta: Elgin (padrão) ou personalizada
 Papel: Avanço 1-10 linhas, corte 0-5 linhas
 Som: 3 beeps padrão
 
-## 📁 Estrutura de Arquivos
-
-```
-projeto/
-├── main.c              # Código principal
-├── E1_Impressora01.dll # DLL da Elgin
-├── XMLSAT.xml          # XML SAT para teste
-├── CANC_SAT.xml        # XML Cancelamento para teste
-├── README.md           # Este arquivo
-└── sistema_impressora.exe # Executável compilado
-```
-
 ## 🔍 Códigos de Erro Comuns
 
 | Código | Descrição |
