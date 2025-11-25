@@ -386,8 +386,6 @@ static void imprimirXMLCancelamentoSAT(void)
 
     if (resultado == 0)
     {
-        AvancaPapel(5);
-        Corte(1);
         printf("XML Cancelamento SAT impresso com sucesso \n");
     }
     else
@@ -518,30 +516,44 @@ int main(void)
 
         case 3:
             imprimirTexto();
+            AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 4:
             imprimirQRCode();
+            AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 5:
             imprimirCodigoBarras();
+            AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 6:
             imprimirXMLSAT();
+            AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 7:
             imprimirXMLCancelamentoSAT();
+        	AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 8:
             abrirGavetaElginOpc();
+            AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 9:
             abrirGavetaOpc();
+            AvancaPapel(5);
+        	Corte(1);
             break;
 
         case 10:
