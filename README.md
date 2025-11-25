@@ -3,7 +3,7 @@
 ## 📖 Descrição
 
 - Este sistema é uma aplicação em C para controle de impressoras térmicas Elgin. O programa oferece uma interface de linha de comando para configurar, conectar e utilizar diversas funcionalidades das impressoras Elgin.
-- Feito por: Dimitri Diaz, Daniel Alencar, Arthur Emiliano, Kauã Felix, Gabriel
+- Feito por: Dimitri Diaz, Daniel Alencar, Arthur Emiliano, Kauã Felix, Gabriel Henrique
 
 ## 🎯 Funcionalidades
 
@@ -41,21 +41,21 @@
 ## 📋 Menu Principal
 
 ```
-=== MENU PRINCIPAL ===
------------------------
-1  - Configurar Conexao
-2  - Abrir Conexao
-3  - Impressao Texto
-4  - Impressao QRCode
-5  - Impressao Cod Barras
-6  - Impressao XML SAT
-7  - Impressao XML Canc SAT
-8  - Abrir Gaveta Elgin
-9  - Abrir Gaveta
-10 - Sinal Sonoro
-11 - Avanco de Papel
-12 - Corte de Papel
-0  - Fechar Conexão e Sair
+===SISTEMA IMPRESSORA ELGIN i9===
+1. Configurar Conexao:
+2. Abrir Conexao com Impressora:
+3. Fechar Conexao:
+4. Imprimir Texto:
+5. Imprimir QR Code:
+6. Imprimir Codigo de Barras:
+7. Imprimir XML SAT:
+8. Imprimir XML Cancelamento SAT:
+9. Abrir Gaveta (ELGIN):
+10. Abrir Gaveta (Generico):
+11. Emitir Sinal Sonoro:
+0. Fechar Conexao e Sair:
+Status: CONECTADA
+Opcao: 
 ```
 
 📄 Funcionalidades
